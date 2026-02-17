@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Inventory</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      h1 { margin-bottom: 1rem; }
+      textarea { width: 100%; min-height: 120px; font-family: monospace; }
+      button { margin: 1rem 0; padding: 0.5rem 1rem; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; vertical-align: top; }
+      th { background: #f2f2f2; }
+      code { background: #f7f7f7; padding: 0.1rem 0.3rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Asset Inventory</h1>
+    <p>Вставте JSON з targets і натисніть <code>Refresh</code>.</p>
+
+    <textarea id="payload">{
+  "targets": [
+    {"hostname": "srv-linux-01", "address": "10.0.0.10", "protocol": "ssh"},
+    {"hostname": "srv-win-01", "address": "10.0.0.20", "protocol": "winrm"}
+  ]
+}</textarea>
+    <br />
+    <button id="refreshBtn">Refresh</button>
+
+    <h2>Assets</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Hostname</th>
+          <th>Address</th>
+          <th>Protocol</th>
+          <th>OS</th>
+          <th>Owner</th>
+          <th>Services</th>
+        </tr>
+      </thead>
+      <tbody id="assetRows"></tbody>
+    </table>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
